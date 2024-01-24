@@ -54,9 +54,6 @@ Maximum digits for 8 bits (max 255), 3 digits
 
 					------- IDEAS -------
 							
-Somehow, use the undefined behaviour of c programming language, to seed the generator.
-Perhaps use core dump (on a runtime of a program that causes segmentation fault) , and then read the core and get some value. Possibly we can use "ulimit -f 1" on linux systems...
-
 Use another algorithm for getting random digits (like arc4random() or openSSL)
 
 Port c application to python or java. Shouldnt be too dificult.

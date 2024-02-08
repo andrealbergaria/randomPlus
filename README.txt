@@ -23,49 +23,26 @@ Byte = 0b01010110
 First Digit = 0110 (digit 6)
 Second Digit = 0101 (digit 5)
 
-So two random numbers are obtained by one byte. This improves performance (example, instead of using a byte by digit).
+So two random digits are obtained by one byte. This improves performance (example, instead of using a byte by digit).
+So we use decimal notation position, and have digit 1 and 5..
+then by using the formula
+	1 * 10^0 + 5* 10^1..than means we get 51 number.
 
-					------- Usage -------
-
-Function getRandom(int numberOfDigits), returns an array of digits randomly created on heap.
-After calling getRandom, programmers should use free().
-
-After, you need to convert the array to a number. So we need to use decimal position notation.
-
-Example :
-
-arrayOfDigits = [3,7,1,0,2]  (called getRandom() with number of digits 5)
-
-The array is converted to 37102 using decimal position notation
-3*10^4 + 7 * 10^3 + 1 * 10^2 + 0 * 10^1 + 2*10⁰
-
-
-printArray is a auxiliar function, to print the array of digits.
-
-compile with 
-	gcc randomPlus.c -g -o randomPlus
 
 	
 			------- Python Implementation -------
 			
+#Auxiliary functions
 count_digit(num) : returns number of digits of num. 
 
-getRandomNumber(min,max) : Given a interval [min,max], returns a random number.
+bytesNeeded(num) : Used to write to a random file 
+("randomPython.bin", in this case is randomPython.bin
+. We need to know the bytes, so to convert it to bytes object, and posteriorely write it
 
-			------- Get Random Number (min,max) -------
-			
-get Digits from min , and max. E.G min is 30 and max is 123, so digits are 2 and 3.
-So random digit is between (2,3) inclusive.
 
-Then cycle through digits (say random digit is 2), creating random digits and multiplicate it by powers of tens, as explained above. In this case it will cycle through random digits 2 or 3.
----- Get Random Number finished-----
- 
-					------- driver_code() -------
-					
- Prints 0xffff random numbers, between min and max...just to show how it works...
- --------------------
-					------- End python implementation------
-					
+driverCodeRandomIntervals(): This produces min and max values, random , using  min less than max. So we get random intervals, to test for a random number between those limits. This uses 3000 attempts with random intervals, and generates random number between those intervals. Say we have min= 0xfff max =0xffff. So it will print 3000 times a random number between those.
+
+driverCodeWriter() : same as driverCodeRandomIntervals, but it write the random numbers into a file ("randomPython.bin")
 					
 					------- Notes -------
 							
@@ -78,9 +55,8 @@ Maximum digits for 8 bits (max 255), 3 digits
 							
 Use another algorithm for getting random digits (like arc4random() or openSSL)
 
-Use two 4 bits with one digit...in the current application, one digit per byte.
 
-Port application to java. Shouldnt be too dificult.
+Port application to java or c. Shouldnt be too dificult.
 
 
 
